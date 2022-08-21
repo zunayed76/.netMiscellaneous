@@ -1,0 +1,25 @@
+CREATE PROCEDURE [dbo].[SPZunayedGetBanksget]
+@CreateBy int,
+@BankCount int output
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	SELECT @BankCount = COUNT(*) FROM tableName where CreateBy = @CreateBy
+
+
+END
+
+
+
+--code to execute
+--1. declare a variable
+declare @countDrakula int
+--2. execute with input(if any) and explicitly specified output paraameter
+-- the output parameter is stored in declared countDrakula variable in this stage
+execute [dbo].[SPZunayedGetBanksget] 1, @countDrakula output
+--3. print the data
+print @countDrakula
